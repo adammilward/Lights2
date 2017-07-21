@@ -11,21 +11,31 @@
 
 Light::fadeMode Light::fMode = Light::SIN;
 
+Light::Light(){
+    pin = 0;
+    //pinMode(pin, OUTPUT);
+    id = 0;
+    gain = MIN_GAIN;
+    range = 1; // range between 0 and 1
+    lower = 0;
+    base = 1;
+    set(-0.1);
+};
+
 Light::Light(
-    int inPin,
-    int ID,
-    float inGain,
+    const int inPin,
+    const int ID,
     float inLower,
     float inUpper
 ) {
     pin = inPin;            // sets the pin
     pinMode(pin, OUTPUT);
     id = ID;
-    gain = (inGain == 0)? randomize(): inGain;
+    gain = randomize();
 	range = inUpper - inLower; // range between 0 and 1
 	lower = inLower * 254 + 1;
 	base = inUpper;
-	set(2);
+	set(0.1);
 }
 
 //  change change power by a given gain or default
@@ -159,7 +169,7 @@ void Light::calcPow() {
 	//Serial.println(gain*1000);
 }
 float Light::randomize() {
-    // 0.001 to 0.008
+    // 0.0002 to 0.00002
     return random(2, 20)/10000.0;
 }
 // called when resetting fade

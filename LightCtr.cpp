@@ -7,12 +7,18 @@
 
 #include "LightCtr.h"
 
-Light LightCtr::Red(CONFIG::RED_PIN, CONFIG::RED_ID);
-Light LightCtr::Green(CONFIG::GREEN_PIN, CONFIG::GREEN_ID);
-Light LightCtr::Blue(CONFIG::BLUE_PIN, CONFIG::BLUE_ID);
+//Light LightCtr::Red(CONFIG::RED_PIN, CONFIG::RED_ID);
+//Light LightCtr::Green(CONFIG::GREEN_PIN, CONFIG::GREEN_ID);
+//Light LightCtr::Blue(CONFIG::BLUE_PIN, CONFIG::BLUE_ID);
 
+// todo the above static objets could be put back, it seems
+// not to be working, perhaps the light objects arn't accessable
 
-LightCtr::LightCtr() {}
+LightCtr::LightCtr() {
+    Light Red(CONFIG::RED_PIN, CONFIG::RED_ID);
+    Light Green(CONFIG::GREEN_PIN, CONFIG::GREEN_ID, 0, 0.7);
+    Light Blue(CONFIG::BLUE_PIN, CONFIG::BLUE_ID, 0, 0.7);
+}
 
 bool LightCtr::action(unsigned long inValue){
     for (int i = 0; i < 20; i++) {
@@ -234,6 +240,6 @@ void LightCtr::checkDelay(){
         Red.flashOff();
         Green.flashOff();
         Blue.flashOff();
-        Serial.println(delay);
+        //Serial.println(delay);
 }
 

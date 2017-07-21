@@ -18,12 +18,12 @@ class LightCtr {
 public:
     LightCtr();
 
-    static Light Red;
-    static Light Green;
-    static Light Blue;
+    Light Red;
+    Light Green;
+    Light Blue;
 
     enum controllerMode { STATIC, FADE };
-    controllerMode ctrMode = controllerMode::STATIC;
+    controllerMode ctrMode = controllerMode::FADE;
 
     int delay = CONFIG::DELAY_MAX/4;
 

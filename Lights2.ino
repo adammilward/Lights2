@@ -22,9 +22,9 @@ void setup() {
     waitMillisLights = millis() + RemoteCtr.LightRemote.delay;
 
     delay(100);
-    RemoteCtr.LightRemote.Red.set(1);
-    RemoteCtr.LightRemote.Green.set(0.5);
-    RemoteCtr.LightRemote.Blue.set(0.2);
+    RemoteCtr.LightRemote.Red.set(0);
+    RemoteCtr.LightRemote.Green.set(0);
+    RemoteCtr.LightRemote.Blue.set(0);
 }
 
 // Interrupt is called once a millisecond,
